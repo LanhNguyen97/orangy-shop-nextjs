@@ -1,0 +1,12 @@
+@mixin font-face($name, $path) {
+  @font-face {
+    font-family: $name;
+    src: url('#{$path}.woff2') format('woff2'), url('#{$path}.woff') format('woff'),
+      url('#{$path}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@include font-face('Lato', './fonts/Lato/Lato-Regular');
+@include font-face('Lora', './fonts/Lora/Lora-Regular');
