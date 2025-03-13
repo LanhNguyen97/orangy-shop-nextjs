@@ -15,13 +15,12 @@ const AuthComponent: FC<PropsWithChildren> = ({ children }) => {
     if (auth === 'true') {
       setIsAuthenticated(true)
     }
-
     setTimeout(() => {
       setIsLoading(false)
     }, 500)
   }, [])
 
-  if (isLoading && !isAuthenticated) {
+  if (isLoading) {
     return (
       <div className="loading-wrapper">
         <SpinningComponent />
@@ -29,7 +28,7 @@ const AuthComponent: FC<PropsWithChildren> = ({ children }) => {
     )
   }
 
-  if (isAuthenticated) {
+  if (!isLoading && isAuthenticated) {
     return <>{children}</>
   }
 
@@ -38,13 +37,8 @@ const AuthComponent: FC<PropsWithChildren> = ({ children }) => {
       localStorage.setItem('authenticated', 'true')
 
       setTimeout(() => {
-        setIsLoading(true)
-      }, 300)
-
-      setTimeout(() => {
-        setIsLoading(false)
         setIsAuthenticated(true)
-      }, 600)
+      }, 300)
     } else {
       setError('Invalid username or password.')
     }
