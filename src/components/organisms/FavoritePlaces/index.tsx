@@ -59,7 +59,7 @@ const FavoritePlaces = () => {
         </div>
       </div>
 
-      <div className="favorite-palces-wrapper__item column-reverse">
+      <div className="favorite-palces-wrapper__item column-reverse row-reverse">
         <ImageWrapper
           src={conicalHat}
           parentClassName="favorite-palces-wrapper__item"
