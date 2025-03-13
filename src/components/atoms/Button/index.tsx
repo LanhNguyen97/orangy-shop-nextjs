@@ -1,14 +1,23 @@
+import { FC, ReactNode } from 'react'
 import './styles.scss'
 
 interface ButtonProps {
-  children: React.ReactNode
+  children: ReactNode
   onClick: () => void
   className?: string
+  type?: 'submit' | 'reset' | 'button'
+  disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, className = '' }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  onClick,
+  className = '',
+  type = 'button',
+  disabled,
+}) => {
   return (
-    <button className={`button ${className}`} onClick={onClick}>
+    <button type={type} className={`button ${className}`} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   )

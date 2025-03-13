@@ -1,5 +1,4 @@
 .input {
-  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -9,4 +8,8 @@
     border-color: #0070f3;
     outline: none;
   }
+}
+
+.input-error {
+  color: rgb(255, 0, 0);
 }
