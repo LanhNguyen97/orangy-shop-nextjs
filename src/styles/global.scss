@@ -10,3 +10,234 @@
 
 @include font-face('Lato', './fonts/Lato/Lato-Regular');
 @include font-face('Lora', './fonts/Lora/Lora-Regular');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@mixin typography($font, $size, $line-height) {
+  font-family: $font, sans-serif;
+  font-weight: 400;
+  font-size: $size;
+  line-height: $line-height;
+}
+
+.lora-title {
+  @include typography('Lora', 40px, 54px);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.lato-title {
+  @include typography('Lato', 32px, 42px);
+}
+
+.lato-text {
+  @include typography('Lato', 14px, 22px);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.lato-heading {
+  @include typography('Lato', 18px, 30px);
+}
+
+.introduction-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  padding: 0 16px;
+  max-width: 810px;
+  margin: 0 auto;
+
+  &__image-section {
+    display: flex;
+    gap: 16px;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: inherit;
+  }
+}
+
+.image-wrapper {
+  width: 50%;
+  position: relative;
+  max-width: 385px;
+  max-height: 628px;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    left: 0;
+    background-color: #000;
+    opacity: 0.2;
+  }
+
+  &__img {
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.favorite-palces-wrapper {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 auto;
+
+  &__item {
+    display: flex;
+    gap: 8px;
+
+    &__image-wrapper {
+      width: 50%;
+      position: relative;
+      max-width: 684px;
+      max-height: 800px;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        left: 0;
+        background-color: #000;
+        opacity: 0.2;
+      }
+
+      &__img {
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        object-fit: cover;
+      }
+    }
+
+    &__content-container {
+      width: 50%;
+      background-color: #f4f0ea;
+      border-radius: 24px;
+      display: flex;
+      align-items: flex-end;
+      max-width: 684px;
+      max-height: 800px;
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px;
+
+        &__title {
+          @include typography('Lora', 64px, 74px);
+        }
+
+        &__description {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          &__title {
+            @include typography('Lato', 20px, 30px);
+          }
+
+          &__content {
+            @include typography('Lato', 14px, 22px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .introduction-wrapper {
+    padding: 0 8.23px;
+  }
+  .introduction-wrapper__image-section {
+    gap: 4px;
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+  .introduction-wrapper__image-section {
+    gap: 8px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  .lora-title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  .introduction-wrapper {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .favorite-palces-wrapper__item__content-container__wrapper__title {
+    @include typography('Lato', 32px, 42px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .favorite-palces-wrapper {
+    padding: 16px 8.23px;
+
+    & .column-reverse {
+      flex-direction: column-reverse;
+    }
+
+    &__item {
+      flex-direction: column;
+      width: 100%;
+
+      &__image-wrapper {
+        width: 100%;
+        height: 500px;
+        max-width: 100%;
+
+        &__img {
+          border-radius: 16px;
+        }
+      }
+
+      &__content-container {
+        width: 100%;
+        max-height: 100%;
+        border-radius: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .favorite-palces-wrapper {
+    & .row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    &__item {
+      &__image-wrapper {
+        height: 800px;
+      }
+    }
+  }
+}
