@@ -1,14 +1,14 @@
-import ImageComponent from '../../atoms/ImageComponent'
+import ImageComponent, { ImageComponentProps } from '@/components/atoms/ImageComponent'
 
-interface ImageWrapperProps {
-  src: string
-  alt: string
-}
+type ImageWrapperProps = ImageComponentProps & { parentClassName?: string }
 
-const ImageWrapper: React.FC<ImageWrapperProps> = ({ src, alt }) => {
+const ImageWrapper: React.FC<ImageWrapperProps> = ({ src, alt, parentClassName }) => {
+  const wrapperClassName = parentClassName ? `${parentClassName}__image-wrapper` : ''
+  const imgClassName = wrapperClassName ? `${wrapperClassName}__img` : ''
+
   return (
-    <div className="image-wrapper">
-      <ImageComponent src={src} alt={alt} className="image-wrapper__img" />
+    <div className={`image-wrapper ${wrapperClassName}`}>
+      <ImageComponent src={src} alt={alt} className={`image-wrapper__img ${imgClassName}`} />
     </div>
   )
 }

@@ -1,7 +1,8 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import Image from 'next/image'
 
-type ImageComponentProps = {
-  src: string
+export type ImageComponentProps = {
+  src: string | StaticImport
   alt: string
   className?: string
 }
